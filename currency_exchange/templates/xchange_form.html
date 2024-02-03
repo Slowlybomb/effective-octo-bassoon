@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+<form action="/xchange" method="post">
+    <label for="euro"></label>
+    <input type="text" size="20" name="euro" id="euro" value="{{ euro }}"/>
+    <br/>
+
+    <label for="yuan">CH¥</label>
+    <input type="radio" name="currency" id="CNY" value="CNY"
+        {% if currency == 'CNY' %}checked{% endif %}>
+    <br/>
+    <label for="pound">£</label>
+    <input type="radio" name="currency" id="GBP" value="GBP"
+        {% if currency == 'GBP' %}checked{% endif %}>
+    <br/>
+    <label for="yen">¥</label>
+    <input type="radio" name="currency" id="JPY" value="JPY"
+        {% if currency == 'JPY' %}checked{% endif %}>
+    <br/>
+    <label for="dollar">$</label>
+    <input type="radio" name="currency" id="USD" value="USD"
+        {% if currency == 'USD' %}checked{% endif %}>
+    <br/>
+    <button type="submit">Convert</button>
+    <br/>
+    <input type="input" name="currency_value" size="30" id="currency_value" value="{{ conversion_result }} ≈ ({{ euro }} * {{ currency_rate }})" disabled>
+
+</form>
+
+{% endblock %}
